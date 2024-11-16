@@ -1,0 +1,43 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[warn] No sbt.version set in project/build.properties, base directory: /home/sanjaya/GitHub/F1TimeCapsule
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.3 (Red Hat, Inc. Java 21.0.5)
+[debug] Load.defaultLoad until apply took 53.050841ms
+[debug]     Load.loadUnit: plugins took 43.530943ms
+[debug]     Load.loadUnit: defsScala took 0.224417ms
+[debug] [Loading] Scanning directory /home/sanjaya/GitHub/F1TimeCapsule
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/sanjaya/GitHub/F1TimeCapsule, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 10.404702 ms
+[debug]         Load.resolveProject(f1timecapsule) took 27.420609ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id f1timecapsule, base: /home/sanjaya/GitHub/F1TimeCapsule, plugins: List(<none>))) took 59.819707ms
+[debug] [Loading] Done in /home/sanjaya/GitHub/F1TimeCapsule, returning: (f1timecapsule)
+[debug]     Load.loadUnit: loadedProjectsRaw took 74.15732ms
+[debug]     Load.loadUnit: cleanEvalClasses took 0.182277ms
+[debug]   Load.loadUnit(file:/home/sanjaya/GitHub/F1TimeCapsule/, ...) took 122.758586ms
+[debug] Load.apply: load took 233.290316ms
+[debug] Load.apply: resolveProjects took 3.549572ms
+[debug] Load.apply: finalTransforms took 33.468453ms
+[debug] Load.apply: config.delegates took 3.962918ms
+[debug] Load.apply: Def.make(settings)... took 188.821649ms
