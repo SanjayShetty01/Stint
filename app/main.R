@@ -1,25 +1,37 @@
 box::use(
-  shiny[bootstrapPage, div, moduleServer, NS, renderUI, tags, uiOutput],
+  shiny, bs4Dash
+)
+
+box::use(
+  ./view/dash_brand,
+  ./view/sidebar_menu,
+  ./view/dashboard_body
 )
 
 #' @export
 ui <- function(id) {
-  ns <- NS(id)
-  bootstrapPage(
-    uiOutput(ns("message"))
+  ns <- shiny::NS(id)
+  header <- bs4Dash::dashboardHeader(title = dash_brand$title)
+  
+  sidebar <- bs4Dash::dashboardSidebar(sidebar_menu$sidebar(ns),
+                                       minified = F, status = "danger")
+  
+  body <- bs4Dash::dashboardBody(dashboard_body$body(ns))
+  
+  
+  bs4Dash::dashboardPage(
+    header = header,
+    sidebar = sidebar,
+    body = body,
+    fullscreen = T,
+    help = NULL
   )
+  
 }
 
 #' @export
 server <- function(id) {
-  moduleServer(id, function(input, output, session) {
-    output$message <- renderUI({
-      div(
-        style = "display: flex; justify-content: center; align-items: center; height: 100vh;",
-        tags$h1(
-          tags$a("Check out Rhino docs!", href = "https://appsilon.github.io/rhino/")
-        )
-      )
-    })
+  shiny::moduleServer(id, function(input, output, session) {
+
   })
 }
