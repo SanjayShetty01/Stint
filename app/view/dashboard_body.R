@@ -3,7 +3,7 @@ box::use(
   ./introduction_page
 )
 
-body  <- function(ns) {
+  body  <- function(ns) {
   bs4Dash::tabItems(
     bs4Dash::tabItem(
       tabName = "home",

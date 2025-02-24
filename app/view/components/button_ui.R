@@ -1,5 +1,6 @@
 box::use(shinyWidgets, htmltools)
 
+#' @export
 button_ui <- function(id, text) {
   shinyWidgets::actionBttn(
     inputId = id,
