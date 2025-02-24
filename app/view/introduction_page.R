@@ -34,7 +34,7 @@ introduction_ui <- function(id) {
     
     shiny::div(class = "intro-container",
                shiny::div(class = "intro-title", 
-                          "🏎️ F1 Time Capsule"),
+                          "🏎️️ F1 Time Capsule"),
                shiny::div(class = "intro-subtitle", 
                           "Dive into the thrilling world of Formula 1"),
                
