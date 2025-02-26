@@ -31,6 +31,9 @@ jobs:
         with:
           r-version: "release"
 
+      - name: Install Packages
+        run: Rscript -e 'install.packages("box.lsp")'
+
       - name: Install renv
         run: Rscript -e 'install.packages("renv")'
 
