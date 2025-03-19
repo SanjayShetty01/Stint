@@ -39,16 +39,6 @@ jobs:
 
       - name: Setup R dependencies
         uses: r-lib/actions/setup-renv@v2
-
-      #- name: Lint R
-        #if: always()
-        #shell: Rscript {0}
-        #run: rhino::lint_r()
-
-      #- name: Run R unit tests
-      #  if: always()
-      #  shell: Rscript {0}
-      #  run: rhino::test_r()
    
       - name: Push to shinyapps.io
         if: github.event_name == 'push'
