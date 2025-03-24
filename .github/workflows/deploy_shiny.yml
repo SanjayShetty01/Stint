@@ -31,9 +31,6 @@ jobs:
         with:
           r-version: "release"
 
-      - name: Install renv
-        run: Rscript -e 'install.packages("renv")'
-
       - name: Setup R dependencies
         uses: r-lib/actions/setup-renv@v2
       - name: Install missing packages
