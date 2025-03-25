@@ -1,3 +1,5 @@
+name: deploy-shiny
+
 on:
   push:
     branches: [main, master]
@@ -5,8 +7,6 @@ on:
   pull_request:
     branches: [main, master]
     paths-ignore: '**/README.md'
-
-name: deploy-shiny
 
 jobs:
   deploy-shiny:
@@ -29,22 +29,10 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      - name: Debug Installed Packages
-        run: Rscript -e 'installed.packages()[, c("Package", "Version")]'
-
-      - name: Force Install box.lsp
+      - name: Install box.lsp package
         run: Rscript -e 'install.packages("box.lsp", repos="https://cloud.r-project.org")'
 
-      - name: Reset renv Cache and Lockfile
-        run: |
-          rm -rf renv/library
-          rm -rf renv/cache
-          rm -f renv.lock
-          Rscript -e 'renv::init()'  # Reinitialize renv
-          Rscript -e 'renv::install("box.lsp")'
-          Rscript -e 'renv::snapshot()'  # Save a clean state
-
-      - name: Setup R dependencies
+      - name: Setup renv
         uses: r-lib/actions/setup-renv@v2
         with:
           bypass-cache: true
@@ -53,7 +41,7 @@ jobs:
         if: always()
         shell: Rscript {0}
         run: rhino::test_r()
-   
+
       - name: Push to shinyapps.io
         if: github.event_name == 'push'
         run: |
