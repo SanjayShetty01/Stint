@@ -31,17 +31,16 @@ jobs:
         with:
           r-version: renv
 
+      - name: Pre-install missing package dependencies
+        run: |
+          Rscript -e 'install.packages(c("box", "box.lsp"), repos = "https://cloud.r-project.org")'
+
       - name: Setup renv
         uses: r-lib/actions/setup-renv@v2
 
       - name: Restore R environment
         run: |
           Rscript -e 'renv::restore()'
-
-      - name: Install missing package as fallback
-        if: failure()
-        run: |
-          Rscript -e 'install.packages("box.lsp", repos = "https://cloud.r-project.org")'
 
       - name: Push to shinyapps.io
         if: github.event_name == 'push'
