@@ -5,10 +5,6 @@ on:
     branches: [main, master]
     paths-ignore: 
       - '**/README.md'
-  pull_request:
-    branches: [main, master]
-    paths-ignore: 
-      - '**/README.md'
 
 jobs:
   deploy-shiny:
@@ -17,47 +13,50 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup system dependencies
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             libcurl4-openssl-dev \
+            libxml2-dev \
+            libssl-dev \
             libgdal-dev \
             libproj-dev \
             libudunits2-dev \
-            libxml2-dev \
-            libssl-dev
+            libharfbuzz-dev \
+            libfribidi-dev
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.3'  # Match your local R version
+          r-version: '4.3'  # Must match your local R version
 
-      - name: Setup renv
-        uses: r-lib/actions/setup-renv@v2
+      - name: Bootstrap renv
+        run: |
+          Rscript -e "if(!requireNamespace('renv')) install.packages('renv', repos = 'https://cloud.r-project.org')"
+          echo "RENV_PATHS_ROOT=${{ github.workspace }}/.renv" >> $GITHUB_ENV
 
-      - name: Restore R environment
-        run: Rscript -e 'renv::restore()'
+      - name: Restore packages
+        run: |
+          Rscript -e "renv::restore(confirm = FALSE, clean = TRUE)"
+          Rscript -e "if(!requireNamespace('box.lsp')) install.packages('box.lsp', repos = 'https://cloud.r-project.org')"
 
       - name: Deploy to shinyapps.io
-        if: github.event_name == 'push'
         env:
           SHINY_ACC_NAME: ${{ secrets.SHINY_ACC_NAME }}
           SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
         run: |
-          Rscript -e '
-          if (!requireNamespace("rsconnect", quietly = TRUE)) {
-            install.packages("rsconnect", repos = "https://cloud.r-project.org")
-          }
+          Rscript -e "
+          if(!require('rsconnect')) install.packages('rsconnect')
           rsconnect::setAccountInfo(
-            name = Sys.getenv("SHINY_ACC_NAME"),
-            token = Sys.getenv("SHINY_TOKEN"),
-            secret = Sys.getenv("SHINY_SECRET")
+            name = '${{ secrets.SHINY_ACC_NAME }}',
+            token = '${{ secrets.SHINY_TOKEN }}',
+            secret = '${{ secrets.SHINY_SECRET }}'
           )
           rsconnect::deployApp(
-            appName = "F1TimeCapsule",
-            appDir = ".",
+            appDir = '.',
+            appName = 'F1TimeCapsule',
             forceUpdate = TRUE,
             lint = FALSE
-          )'
+          )"
