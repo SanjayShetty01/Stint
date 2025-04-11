@@ -47,22 +47,10 @@ jobs:
         run: |
           Rscript -e "renv::restore(confirm = FALSE, clean = TRUE)"
 
-      - name: Deploy to shinyapps.io
-        env:
-          SHINY_ACC_NAME: ${{ secrets.SHINY_ACC_NAME }}
-          SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
-          SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
+      - name: Push to shinyapps.io
+        if: github.event_name == 'push'
         run: |
-          Rscript -e "
-          if(!require('rsconnect')) install.packages('rsconnect')
-          rsconnect::setAccountInfo(
-            name = '${{ secrets.SHINY_ACC_NAME }}',
-            token = '${{ secrets.SHINY_TOKEN }}',
-            secret = '${{ secrets.SHINY_SECRET }}'
-          )
-          rsconnect::deployApp(
-            appDir = '.',
-            appName = 'F1TimeCapsule',
-            forceUpdate = TRUE,
-            lint = FALSE
-          )"
+          install.packages("rsconnect", repos="http://cran.us.r-project.org")
+          rsconnect::setAccountInfo(name="${{secrets.SHINY_ACC_NAME}}", token="${{secrets.TOKEN}}", secret="${{secrets.SECRET}}")
+          rsconnect::deployApp(appName = 'ZooShopInsights', forceUpdate = TRUE)
+        shell: Rscript {0}
