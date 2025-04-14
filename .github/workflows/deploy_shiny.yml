@@ -41,7 +41,8 @@ jobs:
             "bs4Dash", 
             "htmltools", 
             "DBI", 
-            "glue"
+            "glue",
+            ""box.lsp"
           ), repos = "https://cloud.r-project.org")
           
         shell: Rscript {0}
