@@ -43,7 +43,9 @@ jobs:
             "DBI", 
             "glue",
             "box.lsp",
-            "rhino"
+            "rhino",
+            "RSQLite",
+            "dplyr"
           ), repos = "https://cloud.r-project.org")
           
         shell: Rscript {0}
