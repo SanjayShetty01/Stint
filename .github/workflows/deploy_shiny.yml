@@ -42,7 +42,8 @@ jobs:
             "htmltools", 
             "DBI", 
             "glue",
-            "box.lsp"
+            "box.lsp",
+            "rhino"
           ), repos = "https://cloud.r-project.org")
           
         shell: Rscript {0}
@@ -52,5 +53,5 @@ jobs:
         run: |
           install.packages("rsconnect", repos="http://cran.us.r-project.org")
           rsconnect::setAccountInfo(name="${{secrets.SHINY_ACC_NAME}}", token="${{secrets.TOKEN}}", secret="${{secrets.SECRET}}")
-          rsconnect::deployApp(appName = 'ZooShopInsights', forceUpdate = TRUE)
+          rsconnect::deployApp(appName = 'F1TimeCapsule', forceUpdate = TRUE)
         shell: Rscript {0}
