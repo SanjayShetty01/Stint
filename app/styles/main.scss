@@ -1,0 +1,60 @@
+$brand-color: #ff851b;
+
+.bttn-material-flat.bttn-default {
+  background: $brand-color;
+  color: #fff;
+}
+
+.irs-bar {
+  background-color: $brand-color !important;
+  border-top: 1px solid $brand-color !important;
+  border-bottom: 1px solid $brand-color !important;
+}
+
+.irs-handle {
+  border: 2px solid $brand-color !important;
+  background-color: #fff !important;
+}
+
+.irs--shiny .irs-single {
+  color: #fff;
+  text-shadow: none;
+  padding: 1px 3px;
+  background-color: $brand-color;
+  border-radius: 3px;
+  font-size: 11px;
+  line-height: 1.333;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+     .selectize-control.single .selectize-input:hover {
+      border-color: $brand-color;
+    }
+
+    .selectize-control.single .selectize-input .item {
+      background-color: $brand-color;
+      color: #fff !important;
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+
+        .selectize-dropdown .option.selected {
+      background-color: $brand-color;
+      color: #fff !important;
+    }
+
+    .shiny-input-container input[type='number']:hover {
+      border-color: $brand-color !important;
+    }
+
+    .shiny-input-container input[type='number']:focus {
+      border-color:$brand-color !important;
+      box-shadow: 0 0 0 0.2rem rgba(255,133,27,0.25) !important;
+    }
+    .nav-sidebar .nav-item > .nav-link.active {
+      background-color: $brand-color !important;
+      color: #fff !important;
+    }

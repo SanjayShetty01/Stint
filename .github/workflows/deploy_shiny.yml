@@ -55,5 +55,5 @@ jobs:
         run: |
           install.packages("rsconnect", repos="http://cran.us.r-project.org")
           rsconnect::setAccountInfo(name="${{secrets.SHINY_ACC_NAME}}", token="${{secrets.TOKEN}}", secret="${{secrets.SECRET}}")
-          rsconnect::deployApp(appName = 'F1TimeCapsule', forceUpdate = TRUE)
+          rsconnect::deployApp(appName = 'Stint', forceUpdate = TRUE)
         shell: Rscript {0}

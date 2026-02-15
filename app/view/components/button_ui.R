@@ -6,7 +6,6 @@ button_ui <- function(id, text) {
     inputId = id,
     label = text,
     style = "material-flat",
-    color = "danger"
   ) |>
     htmltools::tagAppendAttributes(style = "width: inherit;")
 }

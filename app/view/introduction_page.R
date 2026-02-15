@@ -17,7 +17,7 @@ introduction_ui <- function(id) {
         .intro-title {
           font-size: 36px;
           font-weight: bold;
-          color: #d32f2f;
+          color: #ff851b;
         }
         .intro-subtitle {
           font-size: 24px;
@@ -56,9 +56,6 @@ introduction_ui <- function(id) {
                         "🏁 Enjoy exploring the world of Formula 1! 🏆")
     ),
     
-    shiny::br(),
-    shiny::br(),
-    shiny::br(),
     shiny::br(),
     shiny::br(),
     

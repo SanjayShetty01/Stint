@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="256" cy="256" r="256" fill="#FFFFFF"/>
+  
+  <circle cx="256" cy="256" r="180" stroke="#E5E7EB" stroke-width="32" fill="none"/>
+
+  <circle cx="256" cy="256" r="180" 
+          stroke="#F29602" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-dasharray="300 1130" 
+          stroke-linecap="round" 
+          transform="rotate(-90 256 256)"/>
+  
+
+  <text x="50%" y="45%" 
+        dominant-baseline="middle" 
+        text-anchor="middle" 
+        font-size="220" 
+        fill="#111111">
+    🏎️
+  </text>
+</svg>
