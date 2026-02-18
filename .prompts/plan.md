@@ -1,8 +1,8 @@
-# F1TimeCapsule — Project Plan
+# Stint — Project Plan
 
 ## 1. What Is This Project?
 
-**F1TimeCapsule** (deployed as **"Stint"**) is an **R Shiny dashboard** for exploring historical Formula 1 data — driver & constructor rankings and their race-by-race progression within any season from 1950 to 2024.
+**Stint** (deployed as **"Stint"**) is an **R Shiny dashboard** for exploring historical Formula 1 data — driver & constructor rankings and their race-by-race progression within any season from 1950 to 2024.
 
 - **Data Source**: Local CSV Archive (sourced from Kaggle/Ergast export)
 - **Framework**: [Rhino](https://appsilon.github.io/rhino/) (opinionated Shiny project framework by Appsilon)
@@ -16,7 +16,7 @@
 ## 2. Project Structure
 
 ```
-F1TimeCapsule/
+Stint/
 ├── app.R                  # Rhino entrypoint (do not edit)
 ├── rhino.yml              # Rhino config (sass: node)
 ├── config.yml             # Logging config
@@ -111,7 +111,7 @@ The sidebar uses collapsible sub-menus to keep labels short and organized:
 ### 4.1 Home (Introduction Page)
 
 A welcome page with:
-- App title "🏎️ F1 Time Capsule"
+- App title "🏎️ Stint"
 - Description of the dashboard and data source
 - "Start Exploring 🏁" button — navigates to the Drivers tab on click
 
