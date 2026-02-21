@@ -4,6 +4,8 @@
 
 An interactive Shiny dashboard for exploring historical Formula 1 data, built with the [Rhino](https://appsilon.github.io/rhino/) framework.
 
+## Live Application Link: [Stint](https://sanjayshetty01.shinyapps.io/Stint/)
+
 ## Overview
 
 Stint provides a comprehensive look at Formula 1 seasons through driver and constructor rankings, along with season progression charts. The data is sourced from [Kaggle](https://www.kaggle.com/), which in turn is a dump of the [Ergast API](http://ergast.com/mrd/) database.
