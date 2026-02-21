@@ -28,6 +28,9 @@ jobs:
             libgdal-dev
             libproj-dev
             libudunits2-dev
+            libglpk-dev
+            libgmp3-dev
+            libxml2-dev
           )
           sudo apt-get update
           sudo apt-get install --yes "${packages[@]}"
