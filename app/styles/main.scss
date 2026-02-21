@@ -5,6 +5,16 @@ $brand-color: #ff851b;
   color: #fff;
 }
 
+.bttn-material-flat.bttn-default:hover,
+.bttn-material-flat.bttn-default:focus {
+  background: darken($brand-color, 6%);
+  color: #fff;
+}
+
+.bttn-material-flat.bttn-default::before {
+  background: rgba(255, 133, 27, 0.15);
+}
+
 .irs-bar {
   background-color: $brand-color !important;
   border-top: 1px solid $brand-color !important;
@@ -30,31 +40,80 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-     .selectize-control.single .selectize-input:hover {
-      border-color: $brand-color;
-    }
+.selectize-control.single .selectize-input:hover {
+  border-color: $brand-color;
+}
 
-    .selectize-control.single .selectize-input .item {
-      background-color: $brand-color;
-      color: #fff !important;
-      border-radius: 4px;
-      padding: 2px 6px;
-    }
+.selectize-control.single .selectize-input .item {
+  background-color: $brand-color;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
 
-        .selectize-dropdown .option.selected {
-      background-color: $brand-color;
-      color: #fff !important;
-    }
+.selectize-dropdown .option.selected {
+  background-color: $brand-color;
+  color: #fff !important;
+}
 
-    .shiny-input-container input[type='number']:hover {
-      border-color: $brand-color !important;
-    }
+.shiny-input-container input[type='number']:hover {
+  border-color: $brand-color !important;
+}
 
-    .shiny-input-container input[type='number']:focus {
-      border-color:$brand-color !important;
-      box-shadow: 0 0 0 0.2rem rgba(255,133,27,0.25) !important;
-    }
-    .nav-sidebar .nav-item > .nav-link.active {
-      background-color: $brand-color !important;
-      color: #fff !important;
-    }
+.shiny-input-container input[type='number']:focus {
+  border-color: $brand-color !important;
+  box-shadow: 0 0 0 0.2rem rgba(217, 117, 29, 0.25) !important;
+}
+
+.nav-sidebar .nav-item>.nav-link.active {
+  background-color: $brand-color !important;
+  color: #fff !important;
+}
+
+// Visualize button — brand orange
+.btn-warning {
+  background-color: $brand-color !important;
+  border-color: $brand-color !important;
+  color: #fff !important;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+  background-color: darken($brand-color, 8%) !important;
+  border-color: darken($brand-color, 8%) !important;
+}
+
+// Compare dropdown uses teal instead of brand orange
+$compare-color: #39CCCC;
+
+.compare-dropdown .selectize-control.single .selectize-input .item {
+  background-color: $compare-color !important;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.compare-dropdown .selectize-control.single .selectize-input:hover {
+  border-color: $compare-color !important;
+}
+
+.compare-dropdown .selectize-control.single .selectize-input.focus {
+  border-color: $compare-color !important;
+  box-shadow: 0 0 0 0.2rem rgba(57, 204, 204, 0.25) !important;
+}
+
+.compare-dropdown .selectize-dropdown .option.selected,
+.compare-dropdown .selectize-dropdown .option.active {
+  background-color: $compare-color !important;
+  color: #fff !important;
+}
+
+// Shinyalert confirm button — brand orange
+.sweet-alert button.confirm {
+  background-color: $brand-color !important;
+  box-shadow: none !important;
+}
+
+.sweet-alert button.confirm:hover {
+  background-color: darken($brand-color, 8%) !important;
+}
