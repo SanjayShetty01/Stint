@@ -1,4 +1,4 @@
-box::use(shiny)
+box::use(shiny, bs4Dash)
 box::use(./components/button_ui)
 
 #' @export
@@ -34,7 +34,7 @@ introduction_ui <- function(id) {
     
     shiny::div(class = "intro-container",
                shiny::div(class = "intro-title", 
-                          "🏎️️ F1 Time Capsule"),
+                          "🏎️️ Stint"),
                shiny::div(class = "intro-subtitle", 
                           "Dive into the thrilling world of Formula 1"),
                
@@ -44,9 +44,10 @@ introduction_ui <- function(id) {
                         rankings along with their progression over time."
                ),
                shiny::p(class = "intro-text", 
-                        "Powered by the Ergast API, this app brings you 
-                        historical Formula 1 data to explore past seasons, 
-                        legendary races, and iconic moments."
+                         "Powered by historical Formula 1 data sourced from 
+                         Kaggle (Ergast API database dump), this app brings you 
+                         data to explore past seasons, 
+                         legendary races, and iconic moments."
                ),
                shiny::p(class = "intro-text", 
                         "Use the sidebar to navigate between different 
@@ -70,7 +71,14 @@ introduction_ui <- function(id) {
 }
 
 #' @export
-introduction_server <- function(id) {
+introduction_server <- function(id, parent_session) {
   shiny::moduleServer(id, function(input, output, session) {
+    shiny::observeEvent(input$start_button, {
+      bs4Dash::updateTabItems(
+        session = parent_session,
+        inputId = "sidebar",
+        selected = "drivers"
+      )
+    })
   })
 }

@@ -3,14 +3,15 @@ name: deploy-shiny
 on:
   push:
     branches: [main, master]
-    paths-ignore: 
+    paths-ignore:
       - '**/README.md'
+      - '.prompts/**'
       - 'doc/**'
-      
   pull_request:
     branches: [main, master]
-    paths-ignore: 
+    paths-ignore:
       - '**/README.md'
+      - '.prompts/**'
       - 'doc/**'
 
 jobs:
@@ -44,21 +45,8 @@ jobs:
       
       - name: Install required R packages
         run: |
-          install.packages(c(
-            "treesitter",
-            "treesitter.r",
-            "shiny", 
-            "shinyWidgets", 
-            "bs4Dash", 
-            "htmltools", 
-            "DBI", 
-            "glue",
-            "box.lsp",
-            "rhino",
-            "RSQLite",
-            "dplyr"
-          ), repos = "https://cloud.r-project.org")
-          
+          install.packages("renv", repos = "https://cloud.r-project.org")
+          renv::restore()
         shell: Rscript {0}
         
       - name: Build Sass

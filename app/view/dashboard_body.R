@@ -1,9 +1,14 @@
 box::use(shiny)
 box::use(
-  ./introduction_page
+  ./introduction_page,
+  ./driver_ranking,
+  ./constructor_ranking,
+  ./driver_progression,
+  ./constructor_progression
 )
 
-  body  <- function(ns) {
+#' @export
+body <- function(ns) {
   bs4Dash::tabItems(
     bs4Dash::tabItem(
       tabName = "home",
@@ -11,19 +16,19 @@ box::use(
     ),
     bs4Dash::tabItem(
       tabName = "drivers",
-      shiny::h1("Drivers Rankings")
+      driver_ranking$driver_ranking_ui(ns("driver_ranking"))
     ),
     bs4Dash::tabItem(
       tabName = "constructors",
-      shiny::h1("Constructors Rankings")
+      constructor_ranking$constructor_ranking_ui(ns("constructor_ranking"))
     ),
     bs4Dash::tabItem(
       tabName = "driver_progression",
-      shiny::h1("Driver Ranking Progression")
+      driver_progression$driver_progression_ui(ns("driver_progression"))
     ),
     bs4Dash::tabItem(
       tabName = "constructor_progression",
-      shiny::h1("Constructor Ranking Progression")
+      constructor_progression$constructor_progression_ui(ns("constructor_progression"))
     )
   )
 }

@@ -47,3 +47,8 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# renv library (lockfile and activate.R are tracked)
+renv/library/
+renv/staging/
+renv/local/

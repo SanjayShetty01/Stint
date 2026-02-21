@@ -8,24 +8,32 @@ sidebar <- function(ns) {
       icon = shiny::icon("house", lib = "font-awesome")
     ),
     bs4Dash::menuItem(
-      text = "Drivers Rankings",
-      tabName = "drivers",
-      icon = shiny::icon("eye")
+      text = "Drivers",
+      icon = shiny::icon("person"),
+      bs4Dash::menuSubItem(
+        text = "Rankings",
+        tabName = "drivers",
+        icon = shiny::icon("trophy")
+      ),
+      bs4Dash::menuSubItem(
+        text = "Progression",
+        tabName = "driver_progression",
+        icon = shiny::icon("chart-line")
+      )
     ),
     bs4Dash::menuItem(
-      text = "Constructors Rankings",
-      tabName = "constructors",
-      icon = shiny::icon("eye")
-    ),
-    bs4Dash::menuItem(
-      text = "Driver Ranking Progression",
-      tabName = "driver_progression",
-      icon = shiny::icon("eye")
-    ),
-    bs4Dash::menuItem(
-      text = "constriuctor Ranking Progression",
-      tabName = "constructor_progression",
-      icon = shiny::icon("eye")
-    )  
+      text = "Constructors",
+      icon = shiny::icon("car"),
+      bs4Dash::menuSubItem(
+        text = "Rankings",
+        tabName = "constructors",
+        icon = shiny::icon("trophy")
+      ),
+      bs4Dash::menuSubItem(
+        text = "Progression",
+        tabName = "constructor_progression",
+        icon = shiny::icon("chart-line")
+      )
     )
+  )
 }

@@ -4,7 +4,7 @@ box::use(
 )
 
 #' @export
-driver_ranking_ui <- function(id) {
+constructor_ranking_ui <- function(id) {
   ns <- shiny::NS(id)
 
   shiny::fluidPage(
@@ -34,7 +34,7 @@ driver_ranking_ui <- function(id) {
 }
 
 #' @export
-driver_ranking_server <- function(id) {
+constructor_ranking_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     conn <- db_utils$db_connect()
 
@@ -53,20 +53,20 @@ driver_ranking_server <- function(id) {
 
     ranking_data <- shiny::reactive({
       shiny::req(input$year_select)
-      data <- db_utils$get_ranking_view("driver_summary_view",
+      data <- db_utils$get_ranking_view("constructor_summary_view",
                                          input$year_select, conn)
       if (nrow(data) > 0) {
         data$rank <- seq_len(nrow(data))
-        data <- data[, c("rank", "driver_name", "nationality", "total_races",
+        data <- data[, c("rank", "constructor_name", "nationality", "total_races",
                          "total_wins", "dnf", "top_10_finishes", "total_points")]
-        names(data) <- c("Rank", "Driver", "Nationality", "Races",
+        names(data) <- c("Rank", "Constructor", "Nationality", "Races",
                          "Wins", "DNF", "Top 10", "Points")
       }
       data
     })
 
     output$table_title <- shiny::renderText({
-      paste("Driver Standings -", input$year_select, "Season")
+      paste("Constructor Standings -", input$year_select, "Season")
     })
 
     output$ranking_table <- reactable::renderReactable({
@@ -97,7 +97,7 @@ driver_ranking_server <- function(id) {
         ),
         columns = list(
           Rank = reactable::colDef(width = 60, align = "center"),
-          Driver = reactable::colDef(minWidth = 160),
+          Constructor = reactable::colDef(minWidth = 160),
           Nationality = reactable::colDef(minWidth = 120),
           Races = reactable::colDef(width = 70, align = "center"),
           Wins = reactable::colDef(width = 70, align = "center"),
