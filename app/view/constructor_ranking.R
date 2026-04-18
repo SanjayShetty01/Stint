@@ -36,15 +36,9 @@ constructor_ranking_ui <- function(id) {
 #' @export
 constructor_ranking_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
-    conn <- db_utils$db_connect()
-
-    shiny::onStop(function() {
-      DBI::dbDisconnect(conn)
-    })
-
     # Populate Year Dropdown
     shiny::observe({
-      years <- db_utils$get_available_years(conn)
+      years <- db_utils$get_available_years()
       shiny::updateSelectizeInput(session, "year_select",
                                    choices = years,
                                    selected = years[1],
@@ -54,7 +48,7 @@ constructor_ranking_server <- function(id) {
     ranking_data <- shiny::reactive({
       shiny::req(input$year_select)
       data <- db_utils$get_ranking_view("constructor_summary_view",
-                                         input$year_select, conn)
+                                         input$year_select)
       if (nrow(data) > 0) {
         data$rank <- seq_len(nrow(data))
         data <- data[, c("rank", "constructor_name", "nationality", "total_races",

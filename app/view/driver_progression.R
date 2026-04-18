@@ -84,15 +84,10 @@ driver_progression_ui <- function(id) {
 driver_progression_server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
     ns <- session$ns
-    conn <- db_utils$db_connect()
-
-    shiny::onStop(function() {
-      DBI::dbDisconnect(conn)
-    })
 
     # Populate Year Dropdown
     shiny::observe({
-      years <- db_utils$get_available_years(conn)
+      years <- db_utils$get_available_years()
       shiny::updateSelectizeInput(session, "year_select",
                                    choices = years,
                                    selected = years[1], # Default to latest (first because DESC)
@@ -102,7 +97,7 @@ driver_progression_server <- function(id) {
     # Update driver dropdowns when year changes
     shiny::observeEvent(input$year_select, {
       shiny::req(input$year_select)
-      drivers <- db_utils$get_drivers_by_year(input$year_select, conn)
+      drivers <- db_utils$get_drivers_by_year(input$year_select)
       
       # Reset selections to empty
       shiny::updateSelectizeInput(session, "driver_select",
@@ -130,7 +125,7 @@ driver_progression_server <- function(id) {
       year <- input$year_select
       if (is.null(d1) || d1 == "" || is.null(year) || year == "") return()
 
-      data <- db_utils$get_driver_season_progression(d1, year, conn)
+      data <- db_utils$get_driver_season_progression(d1, year)
       if (is.null(data) || nrow(data) == 0) {
         progression_data(NULL)
         compare_data(NULL)
@@ -140,7 +135,7 @@ driver_progression_server <- function(id) {
 
       d2 <- input$compare_driver_select
       if (!is.null(d2) && d2 != "") {
-        c_data <- db_utils$get_driver_season_progression(d2, year, conn)
+        c_data <- db_utils$get_driver_season_progression(d2, year)
         compare_data(c_data)
       } else {
         compare_data(NULL)

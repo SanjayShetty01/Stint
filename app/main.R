@@ -3,6 +3,7 @@ box::use(
 )
 
 box::use(
+  ./logic/db_utils,
   ./view/dash_brand,
   ./view/sidebar_menu,
   ./view/dashboard_body,
@@ -37,6 +38,14 @@ ui <- function(id) {
 #' @export
 server <- function(id) {
   shiny::moduleServer(id, function(input, output, session) {
+    # Initialize shared DB connection (single connection for all modules)
+    db_utils$db_connect()
+
+    # Clean up on session end
+    shiny::onStop(function() {
+      db_utils$db_disconnect()
+    })
+
     introduction_page$introduction_server("introduction", session)
     driver_ranking$driver_ranking_server("driver_ranking")
     constructor_ranking$constructor_ranking_server("constructor_ranking")
