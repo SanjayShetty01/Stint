@@ -1,4 +1,4 @@
-box::use(shiny, reactable)
+box::use(shiny, reactable, shinycssloaders)
 box::use(
   app/logic/db_utils
 )
@@ -25,9 +25,15 @@ constructor_ranking_ui <- function(id) {
     shiny::fluidRow(
       shiny::column(
         width = 12,
-        shiny::h2(shiny::textOutput(ns("table_title"))),
-        shiny::br(),
-        reactable::reactableOutput(ns("ranking_table"))
+        shinycssloaders::withSpinner(
+          shiny::tagList(
+            shiny::h2(shiny::textOutput(ns("table_title"))),
+            shiny::br(),
+            reactable::reactableOutput(ns("ranking_table"))
+          ),
+          type = 7,
+          color = "#ff851b"
+        )
       )
     )
   )
