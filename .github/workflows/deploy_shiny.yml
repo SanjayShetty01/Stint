@@ -50,6 +50,7 @@ jobs:
         run: |
           install.packages("renv", repos = "https://cloud.r-project.org")
           renv::restore()
+          renv::snapshot()
         shell: Rscript {0}
         
       - name: Build Sass
